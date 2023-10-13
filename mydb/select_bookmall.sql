@@ -10,7 +10,7 @@ SELECT COUNT(orderid) AS ÃÑÆÇ¸Å°Ç¼ö
 FROM orders;
 
 SELECT SUM(saleprice) AS ÃÑÆÇ¸Å¾×,
-       AVG(saleprice) AS ÃÑÆí±Õ¾×
+       AVG(saleprice) AS ÃÑÆò±Õ¾×
 FROM orders;
 
 -- °í°´ÀÌ ÁÖ¹®ÇÑ µµ¼­ÀÇ ÃÑÆÇ¸Å¾×
