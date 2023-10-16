@@ -1,11 +1,12 @@
 -- bookmall 구축
 -- book 테이블 생성
 CREATE TABLE book(
-    bookid      NUMBER PRIMARY KEY,
-    bookname    VARCHAR2(60) NOT NULL,
-    publisher   VARCHAR2(60) NOT NULL,
-    price       NUMBER NOT NULL
+    bookid     NUMBER PRIMARY KEY,    
+    bookname   VARCHAR2(60) NOT NULL,
+    publisher  VARCHAR2(60) NOT NULL,
+    price      NUMBER NOT NULL
 );
+
 -- 도서 자료 추가
 INSERT INTO book VALUES (1, '축구의 역사', '굿스포츠', 7000);
 INSERT INTO book VALUES (2, '축구아는 여자', '나무수', 13000);
@@ -20,23 +21,48 @@ INSERT INTO book VALUES (10, 'Olympic Champions', 'Person', 13000);
 
 SELECT * FROM book;
 
--- 모든 도서의 번호, 이름, 가격을 검색하시오
+-- 모든 도서의 번호와 이름과 가격을 검색하시오
 SELECT bookid, bookname, price FROM book;
 
--- 도서 테이블에 있는 모든 출판사를 검색하시오(중복 제거)
+-- 도서 테이블에 있는 모든 출판사를 검색하시오(중복제거)
 -- DISTINCT는 중복을 없애주는 명령어
 SELECT DISTINCT publisher FROM book;
 
--- 가격이 20000원미만인 도서를 검색하시오(오름차순)// 조건 = WHERE 절 사용
+-- 출판사가 '굿스포츠' 또는 '대한미디어'인 도서를 검색하시오
+SELECT * FROM book
+WHERE publisher = '굿스포츠' or publisher = '대한미디어';
+
+-- 출판사가 '굿스포츠' 또는 '대한미디어'인 도서를 검색하시오
+-- IN() 함수 사용
+SELECT * FROM book
+WHERE publisher IN('굿스포츠', '대한미디어');
+
+-- 출판사가 '굿스포츠' 또는 '대한미디어'인 도서를 제외하고 검색하시오
+-- NOT IN() 함수 사용
+SELECT * FROM book
+WHERE publisher NOT IN('굿스포츠', '대한미디어');
+
+-- 가격이 20000원 미만인 도서를 검색하시오(오름차순 정렬)
 SELECT * FROM book
 WHERE price < 20000
 ORDER BY price;
 
--- 가격이 10000원이상이고 20000원이하인 도서
+-- 가격이 13000원 도서를 검색하시오
+SELECT * FROM book
+WHERE price = 13000;
+
+-- 가격이 13000원이 아닌 도서를 검색하시오
+SELECT * FROM book
+WHERE price <> 13000;
+
+SELECT * FROM book
+WHERE price != 13000;
+
+-- 가격이 10000원 이상이고 20000원 이하인 도서를 검색하시오
+-- 칼럼명 BETWEEN A AND B(>=, <=)
 SELECT * FROM book
 WHERE price >= 10000 AND price <= 20000;
 
--- 칼럼명 BETWEEN A AND B(>=, <=)
 SELECT * FROM book
 WHERE price BETWEEN 10000 AND 20000;
 
@@ -45,18 +71,18 @@ SELECT publisher FROM book
 WHERE bookname = '축구의 역사';
 
 SELECT publisher FROM book
-WHERE bookname LIKE '축구의 역사'; --문자열 비교 LIKE(글의 일부분 포함)
+WHERE bookname LIKE '축구의 역사';
 
---도서이름에 '축구'가 포함된 출판사, 도서이름 출력
-SELECT publisher, bookname FROM book
-WHERE bookname LIKE '%축구%'; --  %사용
+-- 도서이름에 '축구'가 포함된 출판사를 검색하시오
+SELECT bookname, publisher FROM book
+WHERE bookname LIKE '%축구%';
 
---도서이름에 '축구'가 포함되지 않은 출판사, 도서이름 출력
-SELECT publisher, bookname FROM book
-WHERE bookname NOT LIKE '%축구%'; --  %사용
+-- 도서이름에 '축구'가 포함되지 않은 출판사를 검색하시오
+SELECT bookname, publisher FROM book
+WHERE bookname NOT LIKE '%축구%';
 
--- 축구에 관한 도서 중 가격이 20000원 이상인 도서 검색
-SELECT bookname, price FROM book
+-- '축구'에 관한 도서 중 가격이 20000원 이상인 도서를 검색하시오.
+SELECT * FROM book
 WHERE bookname LIKE '%축구%' AND price >= 20000;
 
 -- 정렬
@@ -68,33 +94,5 @@ ORDER BY bookname;
 -- 가격이 같으면 이름을 내림차순으로 정렬하시오
 SELECT * FROM book
 ORDER BY price ASC, bookname DESC;
-
--- 출판사가 '굿스포츠' 또는 '대한미디어'인 도서를 검색하시오
-SELECT * FROM book
-WHERE publisher = '굿스포츠' OR publisher = '대한미디어';
-
---IN()함수 사용
-SELECT * FROM book
-WHERE publisher IN('굿스포츠','대한미디어');
-
--- 출판사가 '굿스포츠' 또는 '대한미디어'인 도서를 검색하시오
--- NOT IN()함수 사용
-SELECT * FROM book
-WHERE publisher NOT IN('굿스포츠','대한미디어');
-
--- 가격이 20000원 미만인 도서 검색
-SELECT * FROM book
-WHERE price < 20000
-ORDER BY price;
-
--- 가격이 13000원인 도서 검색
-SELECT * FROM book
-WHERE price = 13000;
-
--- 가격이 13000원이 아닌 도서 검색
-SELECT * FROM book
-WHERE price <> 13000; -- !=도가능
-
-
 
 COMMIT;

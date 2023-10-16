@@ -1,14 +1,15 @@
 -- 주문 테이블 생성
 CREATE TABLE orders(
-    orderid     NUMBER PRIMARY KEY,
-    custid      NUMBER NOT NULL,
-    bookid      NUMBER NOT NULL,
-    saleprice   NUMBER NOT NULL,
-    orderdate   VARCHAR2(20) NOT NULL, -- DATE(오늘날짜)//지난날짜 직접입력(VARCHAR2)
-    FOREIGN KEY(custid) REFERENCES customer(custid),--외래키
-    FOREIGN KEY(bookid) REFERENCES book(bookid)     --외래키
+    orderid    NUMBER PRIMARY KEY,
+    custid     NUMBER NOT NULL,
+    bookid     NUMBER NOT NULL,
+    saleprice  NUMBER NOT NULL,
+    orderdate  VARCHAR2(20) NOT NULL,
+    FOREIGN KEY(custid) REFERENCES customer(custid), --외래키
+    FOREIGN KEY(bookid) REFERENCES book(bookid)      --외래키
 );
--- 데이터 추가
+
+-- 주문 데이터 추가
 INSERT INTO orders(orderid, custid, bookid, saleprice, orderdate)
 VALUES (1, 1, 1, 6000, '2018-07-01');
 INSERT INTO orders(orderid, custid, bookid, saleprice, orderdate)
@@ -29,3 +30,6 @@ INSERT INTO orders(orderid, custid, bookid, saleprice, orderdate)
 VALUES (9, 2, 10, 7000, '2018-07-09');
 INSERT INTO orders(orderid, custid, bookid, saleprice, orderdate)
 VALUES (10, 3, 8, 13000, '2018-07-10');
+
+
+

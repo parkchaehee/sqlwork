@@ -31,7 +31,8 @@ WHERE deptid = 20;
 ROLLBACK; -- COMMIT 이전에 실행하면 취소됨
 
 -- 자료 삭제(부서번호가 30번인 마케팅팀 삭제)
+-- 삭제 이상(자식이 참조하고 있으므로 삭제 안됨)
 DELETE FROM department
-WHERE deptid = 30;
+WHERE deptid = 10;
 
 COMMIT;

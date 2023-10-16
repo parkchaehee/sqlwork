@@ -1,9 +1,9 @@
---학교 데이터베이스 구축
+-- 학교 데이터베이스 구축
 -- 학과 테이블 생성
 CREATE TABLE major(
-    mname   VARCHAR2(20) PRIMARY KEY,
-    mphone  VARCHAR2(20) NOT NULL,  --필수 입력
-    location VARCHAR2(30) NOT NULL
+    mname     VARCHAR2(20) PRIMARY KEY, 
+    mphone    VARCHAR2(20) NOT NULL,  -- 필수 입력
+    location  VARCHAR2(30) NOT NULL
 );
 
 -- 학과 추가
@@ -20,7 +20,7 @@ ALTER TABLE major MODIFY mname VARCHAR2(30);
 -- 전체 데이터 조회
 SELECT * FROM major;
 
--- 학과명과 전화번호만 출력 (별칭 as 생략가능)
-SELECT mname as 학과명, mphone as 전화번호 FROM major;
-    
+-- 학과명과 전화번호만 출력(별칭을 사용할때 as를 사용)
+SELECT mname AS 학과명, mphone AS 전화번호 FROM major;
+
 COMMIT;
