@@ -52,15 +52,19 @@ SELECT ename 사원이름,
        ROUND(salary/30, -1) 결과3
 FROM emp;
 
--- 급여가 가장 많은 사원과 가장 적은 사원 검색
--- MAX(salary)
+SELECT * FROM EMP;
+
+-- 급여가 가장 많은 사원과 가장 적은 사원의 이름과 급여를 검색하시오
+-- MAX(SALARY)
 -- 서브쿼리(subquery), 중첩쿼리(메인쿼리, 서브쿼리)
--- 최고급여 구하기
+-- 최고급여, 최저급여 구하기
 SELECT MAX(salary) FROM emp;
+SELECT MIN(salary) FROM emp;
 
 SELECT ename, salary
 FROM emp
 WHERE salary = (SELECT MAX(salary) FROM emp)
-    OR salary = (SELECT MIN(salary) FROM emp);
+   OR salary = (SELECT MIN(salary) FROM emp);
+   
 
 
