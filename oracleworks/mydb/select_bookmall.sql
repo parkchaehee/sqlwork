@@ -13,10 +13,6 @@ SELECT SUM(saleprice) AS 총판매액,
        AVG(saleprice) AS 총평균액
 FROM orders;
 
--- 고객이 주문한 도서의 총판매액 계산
-SELECT SUM(saleprice) AS 총판매액
-FROM orders;
-
 -- 고객별로 주문한 도서의 총판맥을 계산
 -- 그룹으로 묶을때 사용 - GROUP BY 칼럼명
 SELECT custid,
