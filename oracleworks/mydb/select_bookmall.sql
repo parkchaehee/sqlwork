@@ -1,4 +1,8 @@
 
+SELECT * FROM customer;
+
+select * from customer where phone is null;
+
 SELECT * FROM orders;
 -- 주문 테이블의 칼럼, 자료형 구조
 DESC orders;
@@ -38,8 +42,11 @@ FROM customer;
 -- 도서중에서 최대가격, 최저가격 알기
 SELECT MAX(price) 최고가격, MIN(price) 최저가격
 FROM book;
+select * from book;
 
-select * from customer;
+select bookname
+from book
+where price = (select max(price) from book);
 
 -- '3번 고객(안산)'이 주문한 도서의 총 판매액 구하기
 select sum(saleprice) as 총판매액

@@ -29,7 +29,7 @@ SELECT cus.custid, cus.name, SUM(ord.saleprice)
 FROM customer cus, orders ord
 WHERE cus.custid = ord.custid
 GROUP BY cus.custid, cus.name
- HAVING cus.name = '김연아'
+ --HAVING cus.name = '박지성';
 ORDER BY cus.name;
 
 -- 주문하지 않은 데이터도 모두 검색

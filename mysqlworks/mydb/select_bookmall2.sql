@@ -96,6 +96,17 @@ from orders
 group by custid
   having count(*) >= 3;
 
+-- 고객별(custid)로 주문한 도서의 총판매액을 계산
+-- 3권 이상 주문한 고객아이디와 고객이름 도서수량, 총판매액 검색
+select 
+	cs.custid,
+    cs.name,
+    count(*) 도서수량,
+    sum(saleprice) 총판매액
+from customer cs, orders od
+where cs.custid = od.custid
+  group by cs.custid, cs.name
+  having count(*) >= 3;
 
 
 
